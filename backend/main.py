@@ -82,9 +82,12 @@ PERSONAS = json.loads('''
 # Models
 class HypothesisRequest(BaseModel):
     hypothesis: str
-    question_type: str = "scale"  # scale, choice
+    question_type: str = "scale"
     options: Optional[List[str]] = None
-    segments: Optional[Dict[str, List[str]]] = None
+    segments: Optional[Dict[str, Any]] = None
+    
+    class Config:
+        extra = "ignore"
 
 class TestResult(BaseModel):
     id: str
